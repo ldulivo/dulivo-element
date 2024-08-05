@@ -1,0 +1,15 @@
+@mixin initial-setup {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+}
+
+@mixin side-element($border-style, $border-radius) {
+  width: 14px;
+  border-width: 1px;
+  border-radius: $border-radius;
+  border-style: $border-style;
+  border-color: var(--color_border);
+}
