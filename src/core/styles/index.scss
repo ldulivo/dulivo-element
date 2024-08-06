@@ -89,11 +89,21 @@
   
   .Container--TopElement {
     width: 100%;
-    height: 100%;
+    height: calc(100% + var(--label-font-size_active));
+    bottom: 0;
     position: absolute;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    overflow: hidden
+  }
+
+  .Container--TopElement-main {
+    width: 100%;
+    height: calc(100% - var(--label-font-size_active));
+    bottom: 0;
+    position: absolute;
+    display: flex;
   }
 
   .Container--LeftSide {
@@ -142,6 +152,8 @@
     top: var(--font-size);
     font-size: var(--font-size);
     transition: all var(--transition-duration) ease-in-out;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     z-index: 8;
   }
   

@@ -25,14 +25,16 @@ const Container: React.FC<ContainerProps> = ({
         <div className="Container--LeftSide"></div>
         <div className="Container--Content">
           <div className="Container--TopElement">
-            {label
-              ? <label
-                  onClick={handleClickLabel}
-                  className={`Container--Label ${hasContent ? "Container--LabelActive" : ""}`}
-                >{label}</label>
-              : null
-            }
-            <div className={`Container--TopSide ${hasContent ? "Container--TopSideActive" : ""}`}></div>
+            <div className="Container--TopElement-main">
+              {label
+                ? <label
+                    onClick={handleClickLabel}
+                    className={`Container--Label ${hasContent ? "Container--LabelActive" : ""}`}
+                  >{label}</label>
+                : null
+              }
+              <div className={`Container--TopSide ${hasContent ? "Container--TopSideActive" : ""}`}></div>
+            </div>
           </div>
           <div className="Container--Children">{children}</div>
           <div className="Container--BottomSide"></div>
