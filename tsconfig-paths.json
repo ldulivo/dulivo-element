@@ -1,0 +1,8 @@
+{
+  "baseUrl": "./",
+  "paths": {
+    "@components/*": ["src/components/*"],
+    "@core/*": ["src/core/*"],
+    "@types/*": ["src/types/*"]
+  }
+}

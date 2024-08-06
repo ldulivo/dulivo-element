@@ -1,14 +1,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const prodMode = process.env.NODE_ENV === "production";
 
-const rulesCss = {
-  test: /\.s[ac]ss$/i,
-  use: [
-    prodMode ? MiniCssExtractPlugin.loader : 'style-loader',
-    "css-loader",
-    "sass-loader"],
+const rulesCss = () => {
+  return {
+    test: /\.s[ac]ss$/i,
+    use: [
+      'style-loader',
+      "css-loader",
+      "sass-loader"],
+  }
 };
 
 const rulesTypeScript = {
@@ -17,13 +17,15 @@ const rulesTypeScript = {
   exclude: /node_modules/,
 };
 
-module.exports = () => {
+module.exports = (env, argv) => {
+  const { mode } = argv;
+  const prodMode = mode === 'production';
 
   return {
-    entry: prodMode ? "./src/index.ts" : "./src/main.tsx",
+    entry: "./src/main.tsx",
     module: {
       rules: [
-        rulesCss,
+        rulesCss(prodMode),
         rulesTypeScript,
       ],
     },
@@ -31,15 +33,11 @@ module.exports = () => {
       extensions: [".js", ".jsx", ".ts", ".tsx", ".scss"],
     },
     plugins: [
-      new HtmlWebpackPlugin({ 
-        template: prodMode ? undefined : "src/index.html",
-        filename: prodMode ? 'index.[contenthash].html' : 'index.html'
-      }),
-      ...(prodMode ? [new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })] : [])
+      new HtmlWebpackPlugin({ template: "src/index.html" })
     ],
     output: {
       filename: prodMode ? "[name].[contenthash].js" : "bundle.js",
-      path: path.resolve(__dirname, "dist"),
+      path: prodMode ? path.resolve(__dirname, "build") : path.resolve(__dirname, "dist"),
     },
     devServer: {
       open: false,

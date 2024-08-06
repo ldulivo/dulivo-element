@@ -1,10 +1,10 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { CodeInputProps } from "./CodeInputProps";
+import React, { useRef, useState } from "react";
 import Container from "../../core/Container";
 import { handleSymbols } from "./handleSymbols";
+import { CodeInputProps } from "../../../types/Elements/CodeInput";
 import "./CodeInput.scss";
 
-const CodeInput: React.FC<CodeInputProps> = ({ code }) => {
+const CodeInput: React.FC<CodeInputProps> = ({ code, darkMode, style }) => {
   const [editing, setEditing] = useState(false);
   const [textCode, setTextCode] = useState(code);
   const [stylePre, setStylePre] = useState({ width: 0, height: 0});
@@ -50,6 +50,8 @@ const CodeInput: React.FC<CodeInputProps> = ({ code }) => {
     <Container
       hasContent={editing}
       setHasContent={setEditing}
+      darkMode={darkMode}
+      style={style}
     >
       {editing
         ? TextArea()

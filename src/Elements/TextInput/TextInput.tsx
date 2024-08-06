@@ -1,13 +1,15 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import "./TextInput.scss";
 import Container from "../../core/Container";
-import { TextInputProps } from "./TextInputProps";
+import { TextInputProps } from "../../../types/Elements/TextInput";
 
 export const TextInput: React.FC<TextInputProps> = ({
   label="",
   type,
   value="",
-  onChange
+  onChange,
+  darkMode,
+  style
 }) => {
   const [onInput, setOnInput] = useState(false);
   const [inputType, setInputType] = useState("text");
@@ -42,7 +44,8 @@ export const TextInput: React.FC<TextInputProps> = ({
       label={label}
       hasContent={onInput}
       setHasContent={setOnInput}
-      // darkMode={true}
+      darkMode={darkMode}
+      style={style}
     >
       <input
         type={inputType}

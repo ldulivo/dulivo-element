@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import React, { CSSProperties, SetStateAction } from "react";
 
 export interface ContainerProps {
   children: React.ReactNode;
@@ -6,4 +6,5 @@ export interface ContainerProps {
   hasContent?: boolean;
   setHasContent?: React.Dispatch<SetStateAction<boolean>>;
   darkMode?: boolean;
+  style?: CSSProperties;
 }

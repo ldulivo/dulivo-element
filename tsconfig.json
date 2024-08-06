@@ -6,14 +6,15 @@
     "declaration": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
+    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
   },
-  "include": ["src/index.ts", "src", "src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src", "types"],
   "exclude": [
     "node_modules",
     "dist",

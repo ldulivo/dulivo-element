@@ -3,7 +3,7 @@ import { TextInputTest } from "./devTest/TextInputTest";
 import { CodeInputTest } from "./devTest/CodeInputTest";
 
 const App: React.FC = () => {
-
+console.log("src/App LEONARDO")
   return (
     <>
       <div>
