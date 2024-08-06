@@ -57,6 +57,7 @@
 .Container--setup {
   @include initial-setup;
   height: 100%;
+  background-color: transparent;
 }
 
 .Container {
@@ -66,11 +67,11 @@
   height: inherit;
   justify-content: center;
   margin: 16px 0;
-  // padding: var(--padding-container);
+  border-radius: var(--border-radius);
 
   
   background-color: var(--background_primary);
-  // background-color: #03dac5;
+  
   * {
     @include initial-setup;
     color: var(--color_secondary);
