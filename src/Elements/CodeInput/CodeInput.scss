@@ -21,35 +21,3 @@
   white-space: nowrap;
   resize: none;
 }
-// .CodeInput {
-//   width: 100%;
-//   height: 100%;
-//   position: relative;
-//   padding: var(--padding-s) 0;
-//   min-height: 100px;
-
-//   .CodeInput--pre,
-//   .CodeInput--txt {
-//     width: 100%;
-//     height: calc(100% - calc(var(--padding-s) * 2));
-//     position: absolute;
-//     overflow-x: auto;
-//     overflow-y: auto;
-//     white-space: pre;
-
-//     &::-webkit-resizer {
-//       display: none;
-//     }
-//   }
-
-//   .CodeInput--txt {
-//     background: transparent;
-//     // color: #ff000024;
-
-//     // &::-webkit-resizer {
-//     //   display: none;
-//     // }
-//   }
-
-// }
-

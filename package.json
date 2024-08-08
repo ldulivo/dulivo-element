@@ -1,7 +1,7 @@
 {
   "homepage": "https://ldulivo.github.io/dulivo-element/",
   "name": "dulivo-element",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A React component library for Dulivo",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
