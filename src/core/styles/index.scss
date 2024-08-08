@@ -44,20 +44,15 @@
   --background_secondary: #121212; //body color
 }
 
-.isFocused {
+.Container--isFocused {
   * {
     color: var(--color_focused);
   }
   
+  &,
   * > div {
     border-color: var(--color_focused) !important;
   }
-}
-
-.Container--setup {
-  @include initial-setup;
-  height: 100%;
-  background-color: transparent;
 }
 
 .Container {
@@ -67,10 +62,10 @@
   height: inherit;
   justify-content: center;
   margin: 16px 0;
-  border-radius: var(--border-radius);
-
-  
+  padding: 0 14px;
   background-color: var(--background_primary);
+  position: relative;
+  @include side-element(none solid solid solid, var(--border-radius));
   
   * {
     @include initial-setup;
@@ -79,89 +74,66 @@
     min-height: 50px;
   }
 
-  .Container--Content {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  
-  }
-  
-  .Container--TopElement {
+  > main {
     width: 100%;
     height: calc(100% + var(--label-font-size_active));
     bottom: 0;
+    left: 0;
     position: absolute;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    overflow: hidden
-  }
+    overflow: hidden;
 
-  .Container--TopElement-main {
-    width: 100%;
-    height: calc(100% - var(--label-font-size_active));
-    bottom: 0;
-    position: absolute;
-    display: flex;
-  }
+    > section {
+      width: 100%;
+      height: calc(100% - var(--label-font-size_active));
+      bottom: 0;
+      position: absolute;
+      display: flex;
 
-  .Container--LeftSide {
-    @include side-element(solid none solid solid, var(--border-radius) 0 0 var(--border-radius));
-  }
-  
-  .Container--RightSide {
-    @include side-element(solid solid solid none, 0 var(--border-radius) var(--border-radius) 0);
-  }
-  
-  .Container--BottomSide {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    border: 1px solid;
-    border-style: none none solid none;
-    border-color: var(--color_border);
-    height: 1px;
-    min-height: unset;
-    z-index: 99;
-  }
-  
-  .Container--TopSide {
-    width: 101%;
-    border-width: 1px;
-    border-style: solid none none none;
-  
-    border-color: var(--color_border);
-    transition-duration: var(--transition-duration);
-    transition-property: border-color, width;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      > div {
+        width: 100%;
+        border-width: 1px;
+        border-style: solid none none none;
+      
+        border-color: var(--color_border);
+        transition-duration: var(--transition-duration);
+        transition-property: border-color, width;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      
+        height: 1px;
+        min-height: unset;
+        z-index: 99;
+      
+        &:first-child {
+          max-width: 7px;
+        }
+      }
 
-    height: 1px;
-    min-height: unset;
-    z-index: 99;
-  }
-  
-  .Container--TopSideActive {
-    width: 100%;
-  }
-  
-  .Container--Label {
-    width: fit-content;
-    padding: 0 5px;
-    position: absolute;
-    top: var(--font-size);
-    font-size: var(--font-size);
-    transition: all var(--transition-duration) ease-in-out;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    z-index: 8;
+      > label {
+        width: fit-content;
+        padding: 0 0 0 14px;
+        position: absolute;
+        top: var(--font-size);
+        font-size: var(--font-size);
+        transition: 
+          top var(--transition-duration) ease-in-out,
+          position var(--transition-duration) ease-in-out,
+          font-size var(--transition-duration) ease-in-out,
+          padding calc(var(--transition-duration) - 0.2s) ease-in-out;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        z-index: 8;
+      }
+    }
   }
   
   .Container--LabelActive {
     top: calc(-1* calc(var(--label-font-size_active)* .6));
     position: relative;
     font-size: var(--label-font-size_active);
+    padding: 0 5px 0 5px;
   }  
   
   .Container--Children {
@@ -174,7 +146,7 @@
     padding: 16px 0;
     z-index: 9;
     background-color: transparent;
-    padding: 0 0 0 5px;
+    padding: 0;
   }
   
 }
